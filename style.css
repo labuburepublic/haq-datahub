@@ -1,1 +1,200 @@
-body{font-family:sans-serif;background:#f4f4f4;margin:0;padding:0}
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+  color: #1a1a1a;
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+.dark-mode header,
+.dark-mode footer,
+.dark-mode nav {
+  background-color: #000;
+  color: #fff;
+}
+.dark-mode .form,
+.dark-mode .contact-box,
+.dark-mode .referral-box,
+.dark-mode .terms-box {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+.dark-mode input,
+.dark-mode select {
+  background-color: #2b2b2b;
+  color: white;
+  border-color: #444;
+}
+
+/* Header */
+header {
+  background-color: #004d40;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+.logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Navigation Bar */
+nav {
+  background-color: #00695c;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+nav a:hover,
+nav a.active {
+  background-color: #004d40;
+}
+
+/* Main Section */
+main {
+  padding: 20px;
+}
+
+/* Buttons */
+.btn,
+button {
+  display: inline-block;
+  background-color: #00796b;
+  color: #fff;
+  padding: 10px 18px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn:hover,
+button:hover {
+  background-color: #004d40;
+}
+
+/* Forms */
+.form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.form label {
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 12px;
+}
+.form input,
+.form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+/* Results */
+.result {
+  margin-top: 20px;
+  text-align: center;
+}
+.success {
+  color: green;
+  font-weight: bold;
+}
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+/* Boxes */
+.contact-box,
+.referral-box,
+.terms-box {
+  max-width: 600px;
+  background-color: #fff;
+  margin: auto;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.contact-box ul,
+.terms-box ul {
+  list-style: none;
+  padding-left: 0;
+}
+.contact-box li {
+  margin-bottom: 12px;
+}
+.note {
+  font-style: italic;
+  color: #777;
+  margin-top: 10px;
+}
+
+/* Wallet Display */
+#walletBalance {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #2e7d32;
+}
+
+/* Footer */
+footer {
+  background-color: #004d40;
+  color: #fff;
+  text-align: center;
+  padding: 15px 10px;
+  margin-top: 30px;
+}
+
+/* Toast Box Style (used in JS alerts) */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #004d40;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+  }
+  .btn,
+  button {
+    width: 100%;
+  }
+}

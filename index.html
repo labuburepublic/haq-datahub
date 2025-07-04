@@ -6,7 +6,9 @@
   <title>HAQ DataHub</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#004d40" />
+  <meta name="theme-color" content="#1a1a1a" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
   <header>
@@ -34,9 +36,12 @@
       </ul>
     </section>
 
+    <p>Wallet: <span id="walletBalance">₦1000</span></p>
     <a href="buy.html" class="btn">Buy Now</a>
     <br><br>
     <button id="installBtn" class="btn" style="display:none;">📲 Install App</button>
+    <br><br>
+    <button onclick="toggleDarkMode()" class="btn">🌓 Toggle Dark Mode</button>
   </main>
 
   <footer>
@@ -45,6 +50,14 @@
 
   <script src="script.js"></script>
   <script>
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('SW registered!'))
+        .catch(err => console.error('SW registration failed:', err));
+    }
+
+    // Handle install prompt
     let deferredPrompt;
     const installBtn = document.getElementById('installBtn');
 
@@ -57,16 +70,15 @@
         installBtn.style.display = 'none';
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then(choice => {
+          const msg = document.createElement("div");
+          msg.textContent = choice.outcome === 'accepted' ? "✅ App installing..." : "❌ Install canceled.";
+          msg.style.cssText = "position:fixed; bottom:20px; left:20px; background:#444; color:white; padding:10px; border-radius:10px;";
+          document.body.appendChild(msg);
+          setTimeout(() => msg.remove(), 2000);
           deferredPrompt = null;
         });
       });
     });
-
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('SW registered'))
-        .catch(err => console.error('SW registration failed', err));
-    }
   </script>
 </body>
 </html>
