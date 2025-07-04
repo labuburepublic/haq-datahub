@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buy Data - HAQ DataHub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="HAQ Logo" class="logo"/>
+    <h1>Buy Data</h1>
+    <p>Select your network and plan 👇</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="buy.html" class="active">Buy Data</a>
+    <a href="contact.html">Contact</a>
+    <a href="referral.html">Referral</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+
+  <main>
+    <form class="form">
+      <label for="network">Network:</label>
+      <select id="network">
+        <option>MTN</option>
+        <option>Airtel</option>
+        <option>Glo</option>
+        <option>9mobile</option>
+      </select>
+
+      <label for="plan">Plan:</label>
+      <select id="plan">
+        <option value="150">500MB - ₦150</option>
+        <option value="400">1.5GB - ₦400</option>
+        <option value="1000">3.5GB - ₦1000</option>
+        <option value="1200">5GB - ₦1200</option>
+      </select>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" placeholder="Enter 11-digit number" required/>
+
+      <button type="button" onclick="fakeBuy()">Buy Now</button>
+    </form>
+
+    <div id="result" class="result"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 HAQ DataHub. Fake app, real design 💯</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

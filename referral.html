@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Referral - HAQ DataHub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="HAQ Logo" class="logo"/>
+    <h1>Referral Program</h1>
+    <p>Invite and earn... hypothetically 😆</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="buy.html">Buy Data</a>
+    <a href="contact.html">Contact</a>
+    <a href="referral.html" class="active">Referral</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+
+  <main>
+    <section class="referral-box">
+      <h2>Your Referral Code</h2>
+      <input type="text" id="referral" value="HAQ9015" readonly />
+      <button onclick="copyCode()">Copy Code</button>
+
+      <p>Share your code with friends and earn ₦50 per signup*</p>
+      <p class="note">*Earning not real. Just vibes and UI 😎</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 HAQ DataHub. UI on point, backend missing 😂</p>
+  </footer>
+
+  <script>
+    function copyCode() {
+      const code = document.getElementById("referral");
+      code.select();
+      code.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Copied: " + code.value);
+    }
+  </script>
+</body>
+</html>

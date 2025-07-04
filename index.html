@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HAQ DataHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1a1a1a" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="HAQ DataHub Logo" class="logo"/>
+    <h1>Welcome to HAQ DataHub</h1>
+    <p>Your trusted data vendor alternative ✨</p>
+  </header>
+
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="buy.html">Buy Data</a>
+    <a href="contact.html">Contact</a>
+    <a href="referral.html">Referral</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+
+  <main>
+    <section class="plans">
+      <h2>Available Data Plans</h2>
+      <ul>
+        <li>MTN 500MB - ₦150</li>
+        <li>Glo 1.5GB - ₦400</li>
+        <li>Airtel 3.5GB - ₦1000</li>
+        <li>9mobile 5GB - ₦1200</li>
+      </ul>
+    </section>
+
+    <p>Wallet: <span id="walletBalance">₦1000</span></p>
+    <a href="buy.html" class="btn">Buy Now</a>
+    <br><br>
+    <button id="installBtn" class="btn" style="display:none;">📲 Install App</button>
+    <br><br>
+    <button onclick="toggleDarkMode()" class="btn">🌓 Toggle Dark Mode</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 HAQ DataHub. Built by Abdulhaq 👑</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('SW registered!'))
+        .catch(err => console.error('SW registration failed:', err));
+    }
+
+    // Handle install prompt
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'inline-block';
+
+      installBtn.addEventListener('click', () => {
+        installBtn.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(choice => {
+          const msg = document.createElement("div");
+          msg.textContent = choice.outcome === 'accepted' ? "✅ App installing..." : "❌ Install canceled.";
+          msg.style.cssText = "position:fixed; bottom:20px; left:20px; background:#444; color:white; padding:10px; border-radius:10px;";
+          document.body.appendChild(msg);
+          setTimeout(() => msg.remove(), 2000);
+          deferredPrompt = null;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
