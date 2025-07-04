@@ -1,0 +1,16 @@
+
+{
+  "name": "HAQ DataHub",
+  "short_name": "DataHub",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0d6efd",
+  "icons": [
+    {
+      "src": "assets/icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}
